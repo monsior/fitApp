@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from .models import Weight
 
-# Create your views here.
+
+def index(request):
+    return render(request, 'weight/weight.html')

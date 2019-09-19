@@ -5,6 +5,13 @@
     <title>Weight</title>
 </head>
 <body>
+{% if messages %}
+    {% for message in messages %}
+        {{ message.tags }}
+        {{ message }}
+    {% endfor %}
+    <br>
+{% endif %}
 Hello {{ user.username }}
 <br><br>
 <form method="post">

@@ -21,4 +21,7 @@ def index(request):
             messages.warning(request, 'Weight NOT added!')
 
     form = WeightForm()
-    return render(request, 'weight/weight.html', {'form': form})
+    weights = Weight.objects.filter(username=request.user)
+    weights = reversed(weights)  # we want to display weights chronologically
+    args = {'form': form, 'weights': weights}
+    return render(request, 'weight/weight.html', args)

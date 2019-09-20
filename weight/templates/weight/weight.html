@@ -14,6 +14,10 @@
 {% endif %}
 Hello {{ user.username }}
 <br><br>
+{% for weight in weights %}
+    <h1>{{ weight.weight }}</h1>
+    <p>{{ weight.date }}</p>
+{% endfor %}
 <form method="post">
     {% csrf_token %}
     {{ form }}

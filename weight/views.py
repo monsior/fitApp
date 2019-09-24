@@ -8,8 +8,7 @@ from django.contrib import messages
 
 def display_weights(request):  # return a dictionary containing every user's weight
     form = WeightForm()
-    weights = Weight.objects.filter(username=request.user)
-    weights = reversed(weights)  # we want to display weights chronologically
+    weights = Weight.objects.filter(username=request.user).order_by('date')
     weight_values = []
     date_labels = []
     for weight in weights:

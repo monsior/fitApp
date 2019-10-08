@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Exercises</title>
 </head>
 <body>
-
+{% if messages %}
+    {% for message in messages %}
+        {{ message.tags }}
+        {{ message }}
+    {% endfor %}
+<br>
+{% endif %}
+Hello {{ user.username }}
+<br><br>
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+<br><br>
+<h1>{{ exercises_list }}</h1>
 </body>
 </html>

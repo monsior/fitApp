@@ -26,7 +26,6 @@ def display_weights(request):  # return a dictionary containing every user's wei
     date_labels = []
     for weight in weights:
         weight_values.append(int(weight.weight))
-        # date_labels.append(str(weight.date.day) + "-" + str(weight.date.month) + "-" + str(weight.date.year))
         date_labels.append(weight.date)
     if len(date_labels) >= 2:
         add_missing_dates(date_labels, weight_values)

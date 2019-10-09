@@ -11,7 +11,10 @@ def display_exercises(request):  # return a dictionary containing every user's e
     exercises = Exercise.objects.filter(username=request.user)
     exercises_list = []
     for exercise in exercises:
-        exercises_list.append(exercise)
+        exercises_list.append({"name": exercise.exercise, "weight": int(exercise.weight),
+                               "series": int(exercise.series), "reps": int(exercise.reps),
+                               "date": str(exercise.date.day) + "-" + str(exercise.date.month)
+                                + "-" + str(exercise.date.year)})
     args = {'form': form, 'exercises_list': exercises_list}
     return args
 

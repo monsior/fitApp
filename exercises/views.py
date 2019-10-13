@@ -15,7 +15,7 @@ def display_exercises(request):  # return a dictionary containing every user's e
                                "series": int(exercise.series), "reps": int(exercise.reps),
                                "date": str(exercise.date.day) + "-" + str(exercise.date.month)
                                 + "-" + str(exercise.date.year)})
-    args = {'form': form, 'exercises_list': exercises_list}
+    args = {'form': form, 'exercises_list': exercises_list, 'title': 'exercises'}
     return args
 
 

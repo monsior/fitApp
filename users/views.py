@@ -15,4 +15,4 @@ def sign_up(request):
             return redirect('/weight/')
     else:
         form = UserCreationForm()
-    return render(request, 'users/signup.html', {'form': form})
+    return render(request, 'users/signup.html', {'form': form, 'title': 'sign up'})

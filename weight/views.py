@@ -30,7 +30,7 @@ def display_weights(request):  # return a dictionary containing every user's wei
     if len(date_labels) >= 2:
         add_missing_dates(date_labels, weight_values)
     format_dates(date_labels)
-    args = {'form': form, 'weight_values': weight_values, 'date_labels': date_labels}
+    args = {'form': form, 'weight_values': weight_values, 'date_labels': date_labels, 'title': 'weight'}
     return args
 
 

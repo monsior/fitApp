@@ -1,56 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Weight</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-</head>
+{% extends "weight/base.html" %}
+{% block content %}
 <body>
-{% if messages %}
-    {% for message in messages %}
-        {{ message.tags }}
-        {{ message }}
-    {% endfor %}
-<br>
-{% endif %}
-Hello {{ user.username }}
-<br><br>
-<h1>{{ weight_values }}</h1>
-<h1>{{ date_labels }}</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
-<canvas id="myChart" width="400" height="400"></canvas>
-<script type="text/javascript">
-var ctx = document.getElementById('myChart');
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: {{ date_labels|safe }},
-        datasets: [{
-            label: '# of Votes',
-            data: {{ weight_values }},
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+
+
+    {% if messages %}
+        {% for message in messages %}
+            {{ message.tags }}
+            {{ message }}
+        {% endfor %}
+    <br>
+    {% endif %}
+
+    Hello {{ user.username }}
+    <br><br>
+
+    <h1>{{ weight_values }}</h1>
+    <h1>{{ date_labels }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <script type="text/javascript">
+    var ctx = document.getElementById('myChart');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {{ date_labels|safe }},
+            datasets: [{
+                label: '# of Votes',
+                data: {{ weight_values }},
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                ],
+                borderWidth: 1
             }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
         }
-    }
-});
-</script>
+    });
+    </script>
 </body>
-</html>
+{% endblock content %}
